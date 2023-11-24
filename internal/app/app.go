@@ -6,6 +6,8 @@ import (
 	"log"
 	"order/config"
 	"order/internal/repo"
+	"order/internal/service"
+	"order/pkg/hasher"
 	"order/pkg/postgres"
 )
 
@@ -39,9 +41,9 @@ func Run(configPath, configName string) {
 	logrus.Info("Initializing services...")
 	deps := service.ServicesDependencies{
 		Repos:    repositories,
-		Hasher:   hasher.NewSHA1Hasher(cfg.Hasher.Salt),
-		SignKey:  cfg.JWT.SignKey,
-		TokenTTL: cfg.JWT.TokenTTL,
+		Hasher:   hasher.NewSHA1Hasher(cfg.Salt),
+		SignKey:  cfg.SignKey,
+		TokenTTL: cfg.TokenTTL,
 	}
 	services := service.NewServices(deps)
 
