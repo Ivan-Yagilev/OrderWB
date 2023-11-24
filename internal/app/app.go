@@ -5,6 +5,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"log"
 	"order/config"
+	"order/pkg/postgres"
 )
 
 func Run(configPath, configName string) {
@@ -23,7 +24,7 @@ func Run(configPath, configName string) {
 
 	// Database
 	logrus.Info("Initializing postgres...")
-	pg, err := postgres.New(cfg.PG.URL, postgres.MaxPoolSize(cfg.PG.MaxPoolSize))
+	pg, err := postgres.New(cfg.URL, postgres.MaxPoolSize(cfg.MaxPoolSize))
 	if err != nil {
 		log.Fatal(fmt.Errorf("app - Run - pgdb.NewServices: %s", err))
 	}
