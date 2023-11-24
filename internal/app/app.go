@@ -5,6 +5,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"log"
 	"order/config"
+	"order/internal/repo"
 	"order/pkg/postgres"
 )
 
@@ -31,19 +32,19 @@ func Run(configPath, configName string) {
 	defer pg.Close()
 
 	//// Repositories
-	//logrus.Info("Initializing repositories...")
-	//repositories := repo.NewRepositories(pg)
-	//
+	logrus.Info("Initializing repositories...")
+	repositories := repo.NewRepositories(pg)
+
 	//// Services dependencies
-	//logrus.Info("Initializing services...")
-	//deps := service.ServicesDependencies{
-	//	Repos:    repositories,
-	//	Hasher:   hasher.NewSHA1Hasher(cfg.Hasher.Salt),
-	//	SignKey:  cfg.JWT.SignKey,
-	//	TokenTTL: cfg.JWT.TokenTTL,
-	//}
-	//services := service.NewServices(deps)
-	//
+	logrus.Info("Initializing services...")
+	deps := service.ServicesDependencies{
+		Repos:    repositories,
+		Hasher:   hasher.NewSHA1Hasher(cfg.Hasher.Salt),
+		SignKey:  cfg.JWT.SignKey,
+		TokenTTL: cfg.JWT.TokenTTL,
+	}
+	services := service.NewServices(deps)
+
 	//// Echo handler
 	//logrus.Info("Initializing handlers and routes...")
 	//handler := echo.New()
