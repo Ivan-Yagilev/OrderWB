@@ -6,7 +6,11 @@ import (
 	"time"
 )
 
+type Some interface {
+}
+
 type Services struct {
+	Some Some
 }
 
 type ServicesDependencies struct {
