@@ -65,6 +65,7 @@ func Run(configPath, configName string) {
 	logrus.Info("Initializing server...")
 	logrus.Debugf("Server port: %s", cfg.Port)
 	httpServer := httpserver.New(handler, httpserver.Port(cfg.Port))
+
 	//// Waiting signal
 	logrus.Info("Configuring graceful shutdown...")
 	interrupt := make(chan os.Signal, 1)
