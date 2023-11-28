@@ -18,10 +18,10 @@ func NewRouter(handler *echo.Echo, services *service.Services) {
 	handler.GET("/health", func(c echo.Context) error { return c.NoContent(200) })
 	//handler.GET("/swagger/*", echoSwagger.WrapHandler)
 
-	//some := handler.Group("/some")
-	//{
-	//	newSomeRoutes(some, services.Some)
-	//}
+	v1 := handler.Group("/v1")
+	{
+		newOrderRoutes(v1.Group("/order"), services.Order)
+	}
 }
 
 func setLogsFile() *os.File {
