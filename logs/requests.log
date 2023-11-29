@@ -1,2 +1,6 @@
 {"time":"2023-11-28T22:22:14.589643681+03:00", "method":"POST","uri":"/v1/order/create", "status":200,"error":""}
 {"time":"2023-11-28T22:29:35.963776852+03:00", "method":"POST","uri":"/v1/order/create", "status":200,"error":""}
+{"time":"2023-11-29T14:28:17.28323118+03:00", "method":"POST","uri":"/v1/order/create", "status":200,"error":""}
+{"time":"2023-11-29T14:51:48.67441517+03:00", "method":"POST","uri":"/v1/order/create", "status":200,"error":""}
+{"time":"2023-11-29T14:52:19.590233949+03:00", "method":"POST","uri":"/v1/order/create", "status":500,"error":""}
+{"time":"2023-11-29T15:00:38.371556359+03:00", "method":"POST","uri":"/v1/order/create", "status":400,"error":"order already exists"}
