@@ -8,12 +8,12 @@ import (
 	"time"
 )
 
-type Order interface {
+type OrderPostgres interface {
 	CreateOrder(ctx context.Context, input entity.Order) error
 }
 
 type Services struct {
-	Order Order
+	OrderPostgres OrderPostgres
 }
 
 type ServicesDependencies struct {
@@ -26,6 +26,6 @@ type ServicesDependencies struct {
 
 func NewServices(deps ServicesDependencies) *Services {
 	return &Services{
-		Order: NewOrderService(deps.Repos.Order),
+		OrderPostgres: NewOrderService(deps.Repos.OrderPostgres),
 	}
 }

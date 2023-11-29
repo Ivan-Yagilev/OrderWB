@@ -30,9 +30,9 @@ type CustomValidator struct {
 	passwdErr error
 }
 
-func NewCustomValidator() *CustomValidator {
+func New() *validator.Validate {
 	v := validator.New()
-	cv := &CustomValidator{v: v}
+	//cv := &CustomValidator{v: v}
 
 	v.RegisterTagNameFunc(func(fld reflect.StructField) string {
 		name := strings.SplitN(fld.Tag.Get("json"), ",", 2)[0]
@@ -42,12 +42,7 @@ func NewCustomValidator() *CustomValidator {
 		return name
 	})
 
-	err := v.RegisterValidation("password", cv.passwordValidate)
-	if err != nil {
-		panic(err)
-	}
-
-	return cv
+	return v
 }
 
 func (cv *CustomValidator) Validate(i interface{}) error {

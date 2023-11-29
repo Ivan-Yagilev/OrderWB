@@ -20,7 +20,7 @@ func NewRouter(handler *echo.Echo, services *service.Services) {
 
 	v1 := handler.Group("/v1")
 	{
-		newOrderRoutes(v1.Group("/order"), services.Order)
+		newOrderRoutes(v1.Group("/order"), services.OrderPostgres)
 	}
 }
 

@@ -87,10 +87,4 @@ func (r *OrderRepo) CreateOrder(ctx context.Context, input entity.Order) error {
 	}
 
 	return nil
-
-	// Переделать базу (orders|items)
-
-	// Кӕширование
-
-	// sqlx or pgx?
 }

@@ -7,16 +7,19 @@ import (
 	"order/pkg/postgres"
 )
 
-type Order interface {
+type OrderPostgres interface {
 	CreateOrder(ctx context.Context, input entity.Order) error
 }
 
+type OrderCache interface {
+}
+
 type Repositories struct {
-	Order
+	OrderPostgres
 }
 
 func NewRepositories(pg *postgres.Postgres) *Repositories {
 	return &Repositories{
-		Order: pgdb.NewOrderRepo(pg),
+		OrderPostgres: pgdb.NewOrderRepo(pg),
 	}
 }

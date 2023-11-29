@@ -8,10 +8,10 @@ import (
 )
 
 type orderRoutes struct {
-	orderService service.Order
+	orderService service.OrderPostgres
 }
 
-func newOrderRoutes(g *echo.Group, orderService service.Order) {
+func newOrderRoutes(g *echo.Group, orderService service.OrderPostgres) {
 	r := &orderRoutes{
 		orderService: orderService,
 	}
